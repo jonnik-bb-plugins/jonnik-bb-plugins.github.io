@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>bb plugins by JonniK</title>
+<meta name="description" content="Plugins for bb by JonniK">
+<style>
+:root{--bg:#f7f7f9;--fg:#1b1d22;--muted:#5a606b;--card:#fff;--border:#dcdee4;--accent:#1f5fd1;--code:#eef0f4}
+@media(prefers-color-scheme:dark){:root{--bg:#121316;--fg:#e8eaee;--muted:#a3a9b5;--card:#1b1d22;--border:#2e323a;--accent:#7aa8ff;--code:#101114}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main,footer{max-width:960px;margin:0 auto;padding:0 20px}
+header{padding:40px 0 24px}
+h1{margin:0 0 8px;font-size:2rem}
+header p{margin:0 0 8px;color:var(--muted)}
+a{color:var(--accent)}
+a:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:3px}
+.grid{display:grid;gap:16px;grid-template-columns:1fr}
+@media(min-width:700px){.grid{grid-template-columns:1fr 1fr}}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:12px}
+.card p{margin:0}
+.head{display:flex;gap:12px;align-items:center}
+.head h2{margin:0;font-size:1.2rem}
+.icon{flex:none;width:40px;height:40px;border-radius:10px;background:var(--accent);color:var(--bg);display:grid;place-items:center;font-weight:700}
+.tag{font-size:.8rem;color:var(--muted)}
+.links{display:flex;gap:16px}
+.muted{color:var(--muted)}
+code{display:block;margin-top:auto;padding:10px 12px;background:var(--code);border:1px solid var(--border);border-radius:8px;font:.85rem/1.4 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere;user-select:all}
+footer{padding:32px 20px 40px;font-size:.85rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>bb plugins by JonniK</h1>
+    <p>Plugins for <a href="https://getbb.app">bb</a>, the agentic IDE. Install from the bb Community catalog or straight from git.</p>
+    <p><a href="https://github.com/jonnik-bb-plugins">GitHub organization</a></p>
+  </header>
+  <section class="grid" aria-label="Plugins">
+    <article class="card">
+      <div class="head"><span class="icon" aria-hidden="true">S</span><div><h2>Skill Dial</h2><span class="tag">Thread content</span></div></div>
+      <p>Run your go-to skills in one tap from chips beside the send button, instead of typing them through the / menu each time. Selected text becomes the skill's argument.</p>
+      <p class="links"><a href="https://github.com/jonnik-bb-plugins/bb-plugin-skill-dial">Repository</a><a href="https://getbb.app/marketplace/skill-dial">Catalog</a></p>
+      <code>bb plugin install skill-dial@bb-community</code>
+    </article>
+    <article class="card">
+      <div class="head"><span class="icon" aria-hidden="true">S</span><div><h2>Session MRs</h2><span class="tag">Code and reviews</span></div></div>
+      <p>Shows the merge and pull requests a thread opened, with live state and pipeline status, in the thread context card and Info tab.</p>
+      <p class="links"><a href="https://github.com/jonnik-bb-plugins/bb-plugin-session-mrs">Repository</a><a href="https://getbb.app/marketplace/session-mrs">Catalog</a></p>
+      <code>bb plugin install session-mrs@bb-community</code>
+    </article>
+    <article class="card">
+      <div class="head"><span class="icon" aria-hidden="true">B</span><div><h2>Bang Shell</h2><span class="tag">Command line</span></div></div>
+      <p>Run a shell command from a thread's composer and hand the agent the command and its output in one message.</p>
+      <p class="links"><a href="https://github.com/jonnik-bb-plugins/bb-plugin-bang-shell">Repository</a><a href="https://getbb.app/marketplace/bang-shell">Catalog</a></p>
+      <code>bb plugin install bang-shell@bb-community</code>
+    </article>
+    <article class="card">
+      <div class="head"><span class="icon" aria-hidden="true">K</span><div><h2>Kimi</h2><span class="tag">Agents and providers</span></div></div>
+      <p>Adds Moonshot AI's Kimi Code CLI to bb as an ACP coding-agent provider; threads run on your own Kimi Code login.</p>
+      <p class="links"><a href="https://github.com/jonnik-bb-plugins/bb-plugin-kimi">Repository</a><span class="muted">Not in catalog</span></p>
+      <code>bb plugin install git:https://github.com/jonnik-bb-plugins/bb-plugin-kimi.git@^0.2</code>
+    </article>
+  </section>
+</main>
+<footer><a href="https://github.com/jonnik-bb-plugins/jonnik-bb-plugins.github.io">Source of this page</a></footer>
+</body>
+</html>
