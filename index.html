@@ -32,6 +32,7 @@ a:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius
 figure{margin:0;min-width:0}
 figure a{display:block;width:fit-content;max-width:100%;border:1px solid var(--border);border-radius:8px;overflow:hidden;line-height:0}
 figure img{max-width:100%;height:auto;display:block}
+@media(max-width:600px){figure a{overflow-x:auto}figure img{max-width:none}}
 figcaption{margin-top:6px;font-size:.85rem;color:var(--muted)}
 code{display:block;margin-top:auto;padding:10px 12px;background:var(--code);border:1px solid var(--border);border-radius:8px;font:.85rem/1.4 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere;user-select:all}
 .off{opacity:.65}
