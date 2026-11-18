@@ -43,8 +43,8 @@ footer{padding:32px 20px 40px;font-size:.85rem;color:var(--muted)}
 dialog{border:0;padding:0;background:transparent;color:#eee;width:100%;height:100%;max-width:none;max-height:none;overflow:auto}
 dialog[open]{display:flex;flex-direction:column}
 dialog::backdrop{background:rgba(0,0,0,.88)}
-dialog .box{margin:auto;padding:48px 56px;display:flex;flex-direction:column;align-items:center;gap:10px}
-dialog img{max-width:95vw;max-height:90vh;object-fit:contain;cursor:zoom-in;background:#fff}
+dialog .box{margin:auto;padding:56px 0 16px;display:flex;flex-direction:column;align-items:center;gap:10px}
+dialog img{max-width:95vw;max-height:calc(90vh - 3rem);object-fit:contain;cursor:zoom-in;background:#fff}
 dialog.zoom img{max-width:none;max-height:none;cursor:zoom-out}
 dialog p{margin:0;max-width:90vw;text-align:center;font-size:.9rem}
 dialog button{position:fixed;background:rgba(0,0,0,.6);color:#fff;border:1px solid #888;border-radius:50%;width:44px;height:44px;font-size:1.6rem;line-height:1;cursor:pointer}
