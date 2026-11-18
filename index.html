@@ -40,6 +40,20 @@ code{display:block;margin-top:auto;padding:10px 12px;background:var(--code);bord
 .badge{display:inline-block;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em;padding:2px 8px;border:1px solid var(--border);border-radius:99px;color:var(--muted);align-self:flex-start}
 img{max-width:100%}
 footer{padding:32px 20px 40px;font-size:.85rem;color:var(--muted)}
+dialog{border:0;padding:0;background:transparent;color:#eee;width:100%;height:100%;max-width:none;max-height:none;overflow:auto}
+dialog[open]{display:flex;flex-direction:column}
+dialog::backdrop{background:rgba(0,0,0,.88)}
+dialog .box{margin:auto;padding:48px 56px;display:flex;flex-direction:column;align-items:center;gap:10px}
+dialog img{max-width:95vw;max-height:90vh;object-fit:contain;cursor:zoom-in;background:#fff}
+dialog.zoom img{max-width:none;max-height:none;cursor:zoom-out}
+dialog p{margin:0;max-width:90vw;text-align:center;font-size:.9rem}
+dialog button{position:fixed;background:rgba(0,0,0,.6);color:#fff;border:1px solid #888;border-radius:50%;width:44px;height:44px;font-size:1.6rem;line-height:1;cursor:pointer}
+dialog button:focus-visible{outline:3px solid #7aa8ff;outline-offset:2px}
+dialog .x{top:8px;right:8px}
+dialog .pv,dialog .nx{top:50%;margin-top:-22px}
+dialog .pv{left:8px}
+dialog .nx{right:8px}
+dialog [hidden]{display:none}
 </style>
 </head>
 <body>
@@ -88,5 +102,36 @@ footer{padding:32px 20px 40px;font-size:.85rem;color:var(--muted)}
   </section>
 </main>
 <footer><a href="https://github.com/jonnik-bb-plugins/jonnik-bb-plugins.github.io">Source of this page</a> &middot; Icons for Session MRs and Bang Shell from <a href="https://lucide.dev">Lucide</a> (ISC license)</footer>
+<dialog id="lb" aria-label="Screenshot"><button class="x" aria-label="Close">&times;</button><button class="pv" aria-label="Previous image">&lsaquo;</button><button class="nx" aria-label="Next image">&rsaquo;</button><div class="box"><img alt=""><p></p></div></dialog>
+<script>
+(function(){
+var d=document.getElementById('lb'),im=d.querySelector('img'),cp=d.querySelector('p'),pv=d.querySelector('.pv'),nx=d.querySelector('.nx'),set,i,from;
+function show(n){
+  i=n;var a=set[n];from=a;d.classList.remove('zoom');
+  im.src=a.href;im.alt=a.querySelector('img').alt;cp.textContent=a.parentNode.querySelector('figcaption').textContent;
+  pv.hidden=n<1;nx.hidden=n>=set.length-1;
+}
+function step(k){if(set[i+k])show(i+k)}
+document.addEventListener('click',function(e){
+  var a=e.target.closest('figure a');
+  if(!a||e.button||e.ctrlKey||e.metaKey||e.shiftKey||!d.showModal)return;
+  e.preventDefault();
+  set=[].slice.call(a.closest('.shots').querySelectorAll('figure a'));
+  show(set.indexOf(a));
+  document.body.style.overflow='hidden';d.showModal();d.scrollTo(0,0);
+});
+d.addEventListener('click',function(e){
+  var t=e.target;
+  if(t.classList.contains('x')||t.classList.contains('box')||t===d)d.close();
+  else if(t===pv)step(-1);
+  else if(t===nx)step(1);
+  else if(t===im)d.classList.toggle('zoom');
+});
+d.addEventListener('keydown',function(e){
+  if(e.key==='ArrowLeft')step(-1);else if(e.key==='ArrowRight')step(1);
+});
+d.addEventListener('close',function(){document.body.style.overflow='';from.focus()});
+})();
+</script>
 </body>
 </html>
