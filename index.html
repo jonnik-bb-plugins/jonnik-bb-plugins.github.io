@@ -16,17 +16,31 @@ h1{margin:0 0 8px;font-size:2rem}
 header p{margin:0 0 8px;color:var(--muted)}
 a{color:var(--accent)}
 a:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:3px}
-.grid{display:grid;gap:16px;grid-template-columns:1fr}
-@media(min-width:700px){.grid{grid-template-columns:1fr 1fr}}
-.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:12px}
-.card p{margin:0}
+.list{display:grid;gap:20px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;display:grid;gap:20px;grid-template-columns:1fr;min-width:0}
+@media(min-width:900px){.card.has-shots{grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:start}}
+.info{display:flex;flex-direction:column;gap:12px;min-width:0}
+.info p{margin:0}
 .head{display:flex;gap:12px;align-items:center}
 .head h2{margin:0;font-size:1.2rem}
-.icon{flex:none;width:40px;height:40px;border-radius:10px;background:var(--accent);color:var(--bg);display:grid;place-items:center;font-weight:700}
+.icon{flex:none;width:40px;height:40px;border-radius:10px;background:var(--accent);color:var(--bg);display:grid;place-items:center}
+.icon svg{width:24px;height:24px}
+.icon .mask{width:24px;height:24px;background:currentColor;-webkit-mask:url(assets/skill-dial/icon.svg) center/contain no-repeat;mask:url(assets/skill-dial/icon.svg) center/contain no-repeat}
 .tag{font-size:.8rem;color:var(--muted)}
 .links{display:flex;gap:16px}
 .muted{color:var(--muted)}
+.shots{display:flex;flex-direction:column;gap:12px;min-width:0}
+figure{margin:0;min-width:0}
+figure a{display:block;border:1px solid var(--border);border-radius:8px;overflow:hidden;line-height:0}
+figure img{width:100%;height:auto;display:block}
+figcaption{margin-top:6px;font-size:.85rem;color:var(--muted)}
+.thumbs{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.thumbs figcaption{font-size:.8rem}
 code{display:block;margin-top:auto;padding:10px 12px;background:var(--code);border:1px solid var(--border);border-radius:8px;font:.85rem/1.4 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere;user-select:all}
+.off{opacity:.65}
+.off .icon{background:var(--muted)}
+.badge{display:inline-block;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em;padding:2px 8px;border:1px solid var(--border);border-radius:99px;color:var(--muted);align-self:flex-start}
+img{max-width:100%}
 footer{padding:32px 20px 40px;font-size:.85rem;color:var(--muted)}
 </style>
 </head>
@@ -37,33 +51,44 @@ footer{padding:32px 20px 40px;font-size:.85rem;color:var(--muted)}
     <p>Plugins for <a href="https://getbb.app">bb</a>, the agentic IDE. Install from the bb Community catalog or straight from git.</p>
     <p><a href="https://github.com/jonnik-bb-plugins">GitHub organization</a></p>
   </header>
-  <section class="grid" aria-label="Plugins">
-    <article class="card">
-      <div class="head"><span class="icon" aria-hidden="true">S</span><div><h2>Skill Dial</h2><span class="tag">Thread content</span></div></div>
-      <p>Run your go-to skills in one tap from chips beside the send button, instead of typing them through the / menu each time. Selected text becomes the skill's argument.</p>
-      <p class="links"><a href="https://github.com/jonnik-bb-plugins/bb-plugin-skill-dial">Repository</a><a href="https://getbb.app/marketplace/skill-dial">Catalog</a></p>
-      <code>bb plugin install skill-dial@bb-community</code>
+  <section class="list" aria-label="Plugins">
+    <article class="card has-shots">
+      <div class="info">
+        <div class="head"><span class="icon" aria-hidden="true"><span class="mask"></span></span><div><h2>Skill Dial</h2><span class="tag">Thread content</span></div></div>
+        <p>Run your go-to skills in one tap from chips beside the send button, instead of typing them through the / menu each time. Selected text becomes the skill's argument.</p>
+        <p class="links"><a href="https://github.com/jonnik-bb-plugins/bb-plugin-skill-dial">Repository</a><a href="https://getbb.app/marketplace/skill-dial">Catalog</a></p>
+        <code>bb plugin install skill-dial@bb-community</code>
+      </div>
+      <div class="shots"><figure><a href="assets/skill-dial/composer-insert.jpg"><img src="assets/skill-dial/composer-insert.jpg" alt="bb composer with a debug skill chip inserted into the draft and a row of skill chips (Review, Debug, Simplify, Security, Verify) beside the send button" width="1280" height="260" loading="lazy"></a><figcaption>Chips beside the send button insert a skill into the draft.</figcaption></figure><div class="thumbs"><figure><a href="assets/skill-dial/selection-in-draft.jpg"><img src="assets/skill-dial/selection-in-draft.jpg" alt="Composer where the Debug chip wraps the selected words of the draft as the skill argument" width="1280" height="260" loading="lazy"></a><figcaption>Selected draft text becomes the skill&rsquo;s argument.</figcaption></figure><figure><a href="assets/skill-dial/settings.jpg"><img src="assets/skill-dial/settings.jpg" alt="Skill Dial settings page listing five configurable chips with name, skill, Send or Insert mode and optional arguments" width="1280" height="720" loading="lazy"></a><figcaption>Settings: choose, order and configure the chips.</figcaption></figure></div></div>
     </article>
-    <article class="card">
-      <div class="head"><span class="icon" aria-hidden="true">S</span><div><h2>Session MRs</h2><span class="tag">Code and reviews</span></div></div>
-      <p>Shows the merge and pull requests a thread opened, with live state and pipeline status, in the thread context card and Info tab.</p>
-      <p class="links"><a href="https://github.com/jonnik-bb-plugins/bb-plugin-session-mrs">Repository</a><a href="https://getbb.app/marketplace/session-mrs">Catalog</a></p>
-      <code>bb plugin install session-mrs@bb-community</code>
+    <article class="card has-shots">
+      <div class="info">
+        <div class="head"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg></span><div><h2>Session MRs</h2><span class="tag">Code and reviews</span></div></div>
+        <p>Shows the merge and pull requests a thread opened, with live state and pipeline status, in the thread context card and Info tab.</p>
+        <p class="links"><a href="https://github.com/jonnik-bb-plugins/bb-plugin-session-mrs">Repository</a><a href="https://getbb.app/marketplace/session-mrs">Catalog</a></p>
+        <code>bb plugin install session-mrs@bb-community</code>
+      </div>
+      <div class="shots"><figure><a href="assets/session-mrs/context-card.jpg"><img src="assets/session-mrs/context-card.jpg" alt="bb thread with a Merge requests card in the top right showing an open pull request" width="1600" height="900" loading="lazy"></a><figcaption>The thread context card lists the pull request the thread opened, with its state.</figcaption></figure><div class="thumbs"><figure><a href="assets/session-mrs/info-tab.jpg"><img src="assets/session-mrs/info-tab.jpg" alt="bb Info tab with a Merge requests section showing the pull request number, title and Open status" width="1600" height="900" loading="lazy"></a><figcaption>The Info tab shows the same pull request with its full title.</figcaption></figure></div></div>
     </article>
-    <article class="card">
-      <div class="head"><span class="icon" aria-hidden="true">B</span><div><h2>Bang Shell</h2><span class="tag">Command line</span></div></div>
-      <p>Run a shell command from a thread's composer and hand the agent the command and its output in one message.</p>
-      <p class="links"><a href="https://github.com/jonnik-bb-plugins/bb-plugin-bang-shell">Repository</a><a href="https://getbb.app/marketplace/bang-shell">Catalog</a></p>
-      <code>bb plugin install bang-shell@bb-community</code>
+    <article class="card has-shots">
+      <div class="info">
+        <div class="head"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg></span><div><h2>Bang Shell</h2><span class="tag">Command line</span></div></div>
+        <p>Run a shell command from a thread's composer and hand the agent the command and its output in one message.</p>
+        <p class="links"><a href="https://github.com/jonnik-bb-plugins/bb-plugin-bang-shell">Repository</a><a href="https://getbb.app/marketplace/bang-shell">Catalog</a></p>
+        <code>bb plugin install bang-shell@bb-community</code>
+      </div>
+      <div class="shots"><figure><a href="assets/bang-shell/run-in-terminal.png"><img src="assets/bang-shell/run-in-terminal.png" alt="bb composer with a git log command typed and a send menu open showing Run in terminal" width="2560" height="1640" loading="lazy"></a><figcaption>Type a command in the composer and pick Run in terminal from the send menu.</figcaption></figure><div class="thumbs"><figure><a href="assets/bang-shell/result.png"><img src="assets/bang-shell/result.png" alt="Thread showing the command and its output in SH and OUTPUT blocks, followed by the agent reading the result" width="2560" height="1640" loading="lazy"></a><figcaption>The command and its output reach the agent as one message, and it answers from them.</figcaption></figure></div></div>
     </article>
-    <article class="card">
-      <div class="head"><span class="icon" aria-hidden="true">K</span><div><h2>Kimi</h2><span class="tag">Agents and providers</span></div></div>
-      <p>Adds Moonshot AI's Kimi Code CLI to bb as an ACP coding-agent provider; threads run on your own Kimi Code login.</p>
-      <p class="links"><a href="https://github.com/jonnik-bb-plugins/bb-plugin-kimi">Repository</a><span class="muted">Not in catalog</span></p>
-      <code>bb plugin install git:https://github.com/jonnik-bb-plugins/bb-plugin-kimi.git@^0.2</code>
+    <article class="card off">
+      <div class="info">
+        <div class="head"><span class="icon" aria-hidden="true">K</span><div><h2>Kimi</h2><span class="tag">Agents and providers</span></div></div>
+        <span class="badge">Discontinued</span>
+        <p>Discontinued: the <a href="https://getbb.app/marketplace/kimi-code">Kimi Code</a> plugin in the bb catalog already does this better, so use that instead.</p>
+        <p class="links"><a href="https://github.com/jonnik-bb-plugins/bb-plugin-kimi">Repository</a></p>
+      </div>
     </article>
   </section>
 </main>
-<footer><a href="https://github.com/jonnik-bb-plugins/jonnik-bb-plugins.github.io">Source of this page</a></footer>
+<footer><a href="https://github.com/jonnik-bb-plugins/jonnik-bb-plugins.github.io">Source of this page</a> &middot; Icons for Session MRs and Bang Shell from <a href="https://lucide.dev">Lucide</a> (ISC license)</footer>
 </body>
 </html>
