@@ -25,6 +25,7 @@ a:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius
 .icon{flex:none;width:40px;height:40px;border-radius:10px;background:var(--accent);color:var(--bg);display:grid;place-items:center}
 .icon svg{width:24px;height:24px}
 .icon .mask{width:24px;height:24px;background:currentColor;-webkit-mask:url(assets/skill-dial/icon.svg) center/contain no-repeat;mask:url(assets/skill-dial/icon.svg) center/contain no-repeat}
+.icon .mask.bp{-webkit-mask-image:url(assets/bottom-panel/icon.svg);mask-image:url(assets/bottom-panel/icon.svg)}
 .tag{font-size:.8rem;color:var(--muted)}
 .links{display:flex;gap:16px}
 .muted{color:var(--muted)}
@@ -64,6 +65,15 @@ dialog [hidden]{display:none}
     <p><a href="https://github.com/jonnik-bb-plugins">GitHub organization</a></p>
   </header>
   <section class="list" aria-label="Plugins">
+    <article class="card">
+      <div class="info">
+        <div class="head"><span class="icon" aria-hidden="true"><span class="mask bp"></span></span><div><h2>Bottom Panel</h2><span class="tag">Themes and appearance</span></div></div>
+        <p>Puts bb's App panel, with its terminal, browser tabs and previews, below the chat like an IDE, with a draggable divider. Select text in the terminal and press Cmd+L (Ctrl+L on Windows and Linux) to drop it into the chat composer without sending it.</p>
+        <p class="links"><a href="https://github.com/jonnik-bb-plugins/bb-plugin-bottom-panel">Repository</a><a href="https://getbb.app/marketplace/bottom-panel">Catalog</a></p>
+        <code>bb plugin install bottom-panel@bb-community</code>
+      </div>
+      <div class="shots"><figure><a href="assets/bottom-panel/bottom-layout.png"><img src="assets/bottom-panel/bottom-layout-crop.png" alt="bb thread with the chat on top and the App panel, showing a zsh terminal, below it" width="800" height="500" loading="lazy"></a><figcaption>The App panel sits below the chat; drag the divider to resize it.</figcaption></figure><figure><a href="assets/bottom-panel/selection-popup.png"><img src="assets/bottom-panel/selection-popup-crop.png" alt="Terminal output with the line listening on :3000 selected and an Add to chat popup above it" width="700" height="180" loading="lazy"></a><figcaption>Select text in the terminal, then press Cmd+L or click Add to chat.</figcaption></figure><figure><a href="assets/bottom-panel/added-to-chat.png"><img src="assets/bottom-panel/added-to-chat-crop.png" alt="Composer holding the quoted terminal line listening on :3000 as a draft" width="760" height="195" loading="lazy"></a><figcaption>The selection lands in the composer as a quote, without being sent.</figcaption></figure></div>
+    </article>
     <article class="card">
       <div class="info">
         <div class="head"><span class="icon" aria-hidden="true"><span class="mask"></span></span><div><h2>Skill Dial</h2><span class="tag">Thread content</span></div></div>
