@@ -26,6 +26,7 @@ a:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius
 .icon svg{width:24px;height:24px}
 .icon .mask{width:24px;height:24px;background:currentColor;-webkit-mask:url(assets/skill-dial/icon.svg) center/contain no-repeat;mask:url(assets/skill-dial/icon.svg) center/contain no-repeat}
 .icon .mask.bp{-webkit-mask-image:url(assets/bottom-panel/icon.svg);mask-image:url(assets/bottom-panel/icon.svg)}
+.icon .mask.cc{-webkit-mask-image:url(assets/claude-code-mode/icon.svg);mask-image:url(assets/claude-code-mode/icon.svg)}
 .tag{font-size:.8rem;color:var(--muted)}
 .links{display:flex;gap:16px}
 .muted{color:var(--muted)}
@@ -100,6 +101,15 @@ dialog [hidden]{display:none}
         <code>bb plugin install bang-shell@bb-community</code>
       </div>
       <div class="shots"><figure><a href="assets/bang-shell/run-in-terminal.png"><img src="assets/bang-shell/run-in-terminal-crop.png" alt="bb composer with a git log command typed and a send menu open showing Run in terminal" width="730" height="160" loading="lazy"></a><figcaption>Type a command in the composer and pick Run in terminal from the send menu.</figcaption></figure><figure><a href="assets/bang-shell/result.png"><img src="assets/bang-shell/result-crop.png" alt="Thread showing the command and its output in SH and OUTPUT blocks, followed by the agent reading the result" width="740" height="365" loading="lazy"></a><figcaption>The command and its output reach the agent as one message, and it answers from them.</figcaption></figure></div>
+    </article>
+    <article class="card">
+      <div class="info">
+        <div class="head"><span class="icon" aria-hidden="true"><span class="mask cc"></span></span><div><h2>Claude Code Mode</h2><span class="tag">Agents and providers</span></div></div>
+        <p>Starts chosen Claude Code threads in Claude Code's experimental Code Mode, where Claude writes JavaScript that calls tools, runs independent calls in parallel and filters output before it reaches the model. Use the sticky &lt;/&gt; toggle in the composer for threads you start in the app, or &ldquo;bb claude-code-mode spawn&rdquo; for agents and scripts. A badge marks a thread that actually runs in Code Mode. Needs Claude Code 2.1.323 or newer with a 5.5 or Fable 5.2 model. Experimental: no Claude in Chrome, computer use or Remote Control in such threads.</p>
+        <p class="links"><a href="https://github.com/jonnik-bb-plugins/bb-plugin-claude-code-mode">Repository</a></p>
+        <code>bb plugin install git:https://github.com/jonnik-bb-plugins/bb-plugin-claude-code-mode.git@semver:^0.1.0</code>
+      </div>
+      <div class="shots"><figure><a href="assets/claude-code-mode/toolbar-toggle.png"><img src="assets/claude-code-mode/toolbar-toggle-crop.png" alt="bb composer toolbar with the highlighted &lt;/&gt; Code Mode toggle" width="768" height="196" loading="lazy"></a><figcaption>The sticky &lt;/&gt; toggle in the composer starts the next thread in Code Mode.</figcaption></figure><figure><a href="assets/claude-code-mode/thread-banner.png"><img src="assets/claude-code-mode/thread-banner-crop.png" alt="bb thread with a purple Claude Code Mode badge above the composer" width="768" height="454" loading="lazy"></a><figcaption>A badge marks a thread that actually runs in Code Mode.</figcaption></figure></div>
     </article>
     <article class="card off">
       <div class="info">
